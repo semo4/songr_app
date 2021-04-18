@@ -1,0 +1,22 @@
+body{
+background: gray;
+}
+h1,h2,p{
+color: white;
+align-items:center;
+display:flex;
+justify-content: center;
+}
+
+.cont{
+align-items:center;
+text-align:center;
+justify-content: center;
+border: 2px solid #000;
+margin: 50px;
+
+}
+
+img{
+width: 50%;
+}
