@@ -8,6 +8,15 @@
 <body>
 
 <h1>Welcome to my Songr App</h1>
+<h1><a href="/addAlbum">Add new Album</a></h1>
+<div th:each="album:${albums}" class="cont">
+    <h1>Title : <span th:text="${album.title}"></span></h1>
+    <h2>Artist : <span th:text="${album.artist}"></span></h2>
+    <p>Song Count : <span th:text="${album.songCount}"></span></p>
+    <p>Length : <span th:text="${album.length}"></span></p>
+    <span> <img th:src=${album.imageUrl}></img></span>
+</div>
+
 
 
 
