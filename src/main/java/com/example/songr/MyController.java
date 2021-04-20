@@ -15,6 +15,8 @@ public class MyController {
 
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    SongRepository songRepository;
 
 
 //    @GetMapping("/")
@@ -51,20 +53,24 @@ public class MyController {
 //    }
 
 
-
-    @GetMapping("/albums")
-    public String getAllStudents(Model m){
+    @GetMapping("/")
+    public String getAllAlbum(Model m){
         m.addAttribute("albums" ,albumRepository.findAll());
         return "index.html";
     }
+    @GetMapping("/albums")
+    public String getAllAlbums(Model m){
+        m.addAttribute("albums" ,albumRepository.findAll());
+        return "albums.html";
+    }
 
     @GetMapping("/addAlbum")
-    public String getAddStudentView(){
+    public String getAddAlbumView(){
         return "addAlbum.html";
     }
 
     @PostMapping("/albums")
-    public RedirectView addStudent(@RequestParam(value = "title") String title ,
+    public RedirectView addAlbum(@RequestParam(value = "title") String title ,
                                    @RequestParam(value= "artist") String artist,
                                    @RequestParam(value="songCount") int songCount,
                                    @RequestParam(value="length") int length,
@@ -73,6 +79,25 @@ public class MyController {
         albumRepository.save(album);
         return  new RedirectView("/albums");
     }
+
+    @GetMapping("/albums/{id}")
+    public String getAlbumById(@PathVariable int id, Model m){
+        Album album =albumRepository.findAlbumById(id);
+        List<Song> song = songRepository.findSongByAlbumId(id);
+        m.addAttribute("album", album);
+        m.addAttribute("songs",song);
+        return "singleAlbum.html";
+    }
+
+    @GetMapping("/addsongs/{id}")
+    public String getAddSongView(@PathVariable int id, Model m){
+        m.addAttribute("albumId", id);
+        return "addsong";
+    }
+
+
+
+
 
 
 

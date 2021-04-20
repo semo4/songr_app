@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Add a new Song</h3>
+<form action="/songs" method="post">
+    <input type="hidden" th:value="${albumId}" name="albumId">
+    <label>title</label>
+    <input type="text" name="title" />
+
+    <label>length</label>
+    <input type="text" name="length" />
+
+    <label>trackNumber</label>
+    <input type="text" name="trackNumber" />
+
+    <input type="submit" value="add song">
+</form>
+</body>
+</html>
