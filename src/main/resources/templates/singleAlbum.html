@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<h1>Welcome to Single Albums page</h1>
+
+<div  class="cont">
+    <h1>Title: <span th:text="${album.title}"></span></h1>
+    <h2>Artist: <span th:text="${album.artist}"></span></h2>
+    <p>Song Count: <span th:text="${album.songCount}"></span></p>
+    <p>Length: <span th:text="${album.length}"></span></p>
+    <span> <img th:src=${album.imageUrl}></img></span>
+</div>
+
+<div th:each="song:${songs}" class="cont">
+    <h1>Title: <span th:text="${song.title}"></span></h1>
+    <p>Length: <span th:text="${song.length}"></span></p>
+    <p>Length: <span th:text="${song.trackNumber}"></span></p>
+
+</div>
+</body>
+</html>
